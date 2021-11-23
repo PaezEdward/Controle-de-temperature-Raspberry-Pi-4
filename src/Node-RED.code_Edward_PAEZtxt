@@ -1,0 +1,643 @@
+[
+    {
+        "id": "1e502bf4.26b544",
+        "type": "tab",
+        "label": "Projet_Linux_Edward",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "6071d7e5.07daa8",
+        "type": "mqtt in",
+        "z": "1e502bf4.26b544",
+        "name": "",
+        "topic": "raspEdward/#",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "c6657fc0.d5a17",
+        "x": 90,
+        "y": 260,
+        "wires": [
+            [
+                "a9ea9a8a.1773b8"
+            ]
+        ]
+    },
+    {
+        "id": "2ee34620.7a2dea",
+        "type": "ui_template",
+        "z": "1e502bf4.26b544",
+        "group": "dcdf695a.fea688",
+        "name": "Board",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "format": "<img src=\"/raspberryPi4_605pp.png\"/>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "x": 90,
+        "y": 60,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "4c63bcec.26a084",
+        "type": "ui_text_input",
+        "z": "1e502bf4.26b544",
+        "name": "",
+        "label": "IP",
+        "tooltip": "",
+        "group": "60adb6c2.4f63d8",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "mode": "text",
+        "delay": 300,
+        "topic": "",
+        "x": 570,
+        "y": 40,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a9ea9a8a.1773b8",
+        "type": "function",
+        "z": "1e502bf4.26b544",
+        "name": "parsingData",
+        "func": "var o;\nvar msg1={};\nvar msg2={};\nvar msg3={};\nvar msg4={};\nvar msg5={};\nvar msg6={};\nvar msg7={};\nvar msg8={};\nvar msg9={};\no = msg.payload.split(\";\");\nmsg1.payload = o[0];\nmsg2.payload = o[1];\nmsg3.payload = o[2];\nmsg4.payload = o[3];\nmsg5.payload = o[4];\nmsg6.payload = o[5];\nmsg7.payload = o[6];\nmsg8.payload = o[7];\nmsg9.payload = o[8];\n\nreturn [msg1,msg2,msg3,msg4,msg5,msg6,msg7,msg8,msg9]",
+        "outputs": 9,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 290,
+        "y": 260,
+        "wires": [
+            [
+                "4c63bcec.26a084"
+            ],
+            [
+                "a800215c.cc46f"
+            ],
+            [
+                "22cff197.c8efde",
+                "ab647da5.e3f81"
+            ],
+            [
+                "863a9458.118d18",
+                "f1192d98.6ac12"
+            ],
+            [
+                "5e0a0b14.66a014",
+                "d6a54ad7.0a7e98"
+            ],
+            [
+                "edaac2f4.413ee"
+            ],
+            [
+                "953b6455.3a94c8"
+            ],
+            [
+                "70dffd8a.02a004",
+                "4e0284c.b55257c",
+                "14058835.4609b8"
+            ],
+            [
+                "2a054aef.bda9c6",
+                "f8435d0c.0187c"
+            ]
+        ]
+    },
+    {
+        "id": "a800215c.cc46f",
+        "type": "ui_text_input",
+        "z": "1e502bf4.26b544",
+        "name": "",
+        "label": "IP Public",
+        "tooltip": "",
+        "group": "60adb6c2.4f63d8",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "mode": "text",
+        "delay": 300,
+        "topic": "",
+        "x": 580,
+        "y": 80,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "22cff197.c8efde",
+        "type": "ui_text_input",
+        "z": "1e502bf4.26b544",
+        "name": "",
+        "label": "TempCPU",
+        "tooltip": "",
+        "group": "60adb6c2.4f63d8",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "mode": "text",
+        "delay": 300,
+        "topic": "",
+        "x": 590,
+        "y": 120,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ab647da5.e3f81",
+        "type": "ui_chart",
+        "z": "1e502bf4.26b544",
+        "name": "",
+        "group": "a3d11bd6.7bc108",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "label": "Température CPU",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "x": 510,
+        "y": 440,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "863a9458.118d18",
+        "type": "ui_text_input",
+        "z": "1e502bf4.26b544",
+        "name": "",
+        "label": "TempGPU",
+        "tooltip": "",
+        "group": "60adb6c2.4f63d8",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "mode": "text",
+        "delay": 300,
+        "topic": "",
+        "x": 590,
+        "y": 160,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f1192d98.6ac12",
+        "type": "ui_chart",
+        "z": "1e502bf4.26b544",
+        "name": "",
+        "group": "a3d11bd6.7bc108",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "label": "Température GPU",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "x": 510,
+        "y": 520,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "5e0a0b14.66a014",
+        "type": "ui_text_input",
+        "z": "1e502bf4.26b544",
+        "name": "",
+        "label": "VoltCPU",
+        "tooltip": "",
+        "group": "60adb6c2.4f63d8",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "mode": "text",
+        "delay": 300,
+        "topic": "",
+        "x": 580,
+        "y": 200,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d6a54ad7.0a7e98",
+        "type": "ui_chart",
+        "z": "1e502bf4.26b544",
+        "name": "",
+        "group": "a3d11bd6.7bc108",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "label": "Voltage CPU",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "x": 490,
+        "y": 480,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "edaac2f4.413ee",
+        "type": "ui_text_input",
+        "z": "1e502bf4.26b544",
+        "name": "",
+        "label": "MyHost",
+        "tooltip": "",
+        "group": "60adb6c2.4f63d8",
+        "order": 6,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "mode": "text",
+        "delay": 300,
+        "topic": "",
+        "x": 580,
+        "y": 240,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "953b6455.3a94c8",
+        "type": "ui_text_input",
+        "z": "1e502bf4.26b544",
+        "name": "",
+        "label": "Date",
+        "tooltip": "",
+        "group": "60adb6c2.4f63d8",
+        "order": 7,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "mode": "text",
+        "delay": 300,
+        "topic": "",
+        "x": 570,
+        "y": 280,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "70dffd8a.02a004",
+        "type": "ui_text_input",
+        "z": "1e502bf4.26b544",
+        "name": "",
+        "label": "DS18B20",
+        "tooltip": "",
+        "group": "60adb6c2.4f63d8",
+        "order": 8,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "mode": "text",
+        "delay": 300,
+        "topic": "",
+        "x": 580,
+        "y": 320,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2a054aef.bda9c6",
+        "type": "ui_text_input",
+        "z": "1e502bf4.26b544",
+        "name": "",
+        "label": "Relay",
+        "tooltip": "",
+        "group": "60adb6c2.4f63d8",
+        "order": 9,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "mode": "text",
+        "delay": 300,
+        "topic": "",
+        "x": 570,
+        "y": 360,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "331f823d.f37f1e",
+        "type": "ui_template",
+        "z": "1e502bf4.26b544",
+        "group": "cc9bc59a.666388",
+        "name": "Capteur",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "format": "<img src=\"/DS18B20.png\"/>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "x": 100,
+        "y": 100,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "de3537fc.1611d8",
+        "type": "ui_template",
+        "z": "1e502bf4.26b544",
+        "group": "192e6bc0.808504",
+        "name": "L'actionneur",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "format": "<img src=\"/Relay2Module.png\"/>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "x": 110,
+        "y": 140,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "4e0284c.b55257c",
+        "type": "ui_chart",
+        "z": "1e502bf4.26b544",
+        "name": "",
+        "group": "cc9bc59a.666388",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "label": "Température",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "x": 490,
+        "y": 560,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "14058835.4609b8",
+        "type": "ui_gauge",
+        "z": "1e502bf4.26b544",
+        "name": "",
+        "group": "cc9bc59a.666388",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "gtype": "donut",
+        "title": "",
+        "label": "Le degré Celsius",
+        "format": "{{value}} °C",
+        "min": "-55",
+        "max": "125",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 470,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "5d770393.1b104c",
+        "type": "ui_led",
+        "z": "1e502bf4.26b544",
+        "group": "192e6bc0.808504",
+        "order": 2,
+        "width": "0",
+        "height": "0",
+        "label": "LED d'Etat du Relay",
+        "labelPlacement": "left",
+        "labelAlignment": "left",
+        "colorForValue": [
+            {
+                "color": "red",
+                "value": "0",
+                "valueType": "num"
+            },
+            {
+                "color": "green",
+                "value": "1",
+                "valueType": "num"
+            }
+        ],
+        "allowColorForValueInMessage": false,
+        "name": "Relay Led ",
+        "x": 480,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "f8435d0c.0187c",
+        "type": "function",
+        "z": "1e502bf4.26b544",
+        "name": "",
+        "func": "var payload  = msg.payload; \nif (msg.payload === \"Relay ON\" ){\n    msg.payload  = 1;\n} else {\n    msg.payload = 0;\n}\n\n//msg.payload = payload[0];\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 320,
+        "y": 640,
+        "wires": [
+            [
+                "5d770393.1b104c"
+            ]
+        ]
+    },
+    {
+        "id": "c6657fc0.d5a17",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "localhost",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "compatmode": false,
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    },
+    {
+        "id": "dcdf695a.fea688",
+        "type": "ui_group",
+        "name": "Board Raspberry Pi 4 Model B",
+        "tab": "12d17651.e1b43a",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "60adb6c2.4f63d8",
+        "type": "ui_group",
+        "name": "Board Information",
+        "tab": "12d17651.e1b43a",
+        "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "a3d11bd6.7bc108",
+        "type": "ui_group",
+        "name": "Waves",
+        "tab": "12d17651.e1b43a",
+        "order": 3,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "cc9bc59a.666388",
+        "type": "ui_group",
+        "name": "Capteur 1-Wire (GPIO-04)",
+        "tab": "12d17651.e1b43a",
+        "order": 4,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "192e6bc0.808504",
+        "type": "ui_group",
+        "name": "L'actionneur Relay (GPIO-17)",
+        "tab": "12d17651.e1b43a",
+        "order": 5,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "12d17651.e1b43a",
+        "type": "ui_tab",
+        "name": "PROJET LINUX POUR L'EMBARQUÉ Edward PAEZ ©2020, Encadrant M. Walid ABDAOUI",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
